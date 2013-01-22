@@ -1,0 +1,22 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.cover {
+    width: 172px;
+    height: 172px;
+
+    position: relative;
+    left: -18px;
+    top: 270px;
+
+    background: url("img/covers/7.png") no-repeat;
+}
+
+.column {
+    width: 136px;
+    height: 100%;
+    margin-left: 264px;
+    background-color: #F1F1F1;
+}
