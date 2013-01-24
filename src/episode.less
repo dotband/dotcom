@@ -1,11 +1,15 @@
 @bodyDesignedWidth: 1200px;
 @rightSideDesignedWidth: 800px;
 @columnDesignedWidth: 136px;
-@leftSideDesignedWidth: (@bodyDesignedWidth - @rightSideDesignedWidth - @columnDesignedWidth);
+@leftSideDesignedWidth: @bodyDesignedWidth - @rightSideDesignedWidth - @columnDesignedWidth;
+
+@verticalBaselinePositionInPercents: 100% * @leftSideDesignedWidth / (@leftSideDesignedWidth + @rightSideDesignedWidth);
+
+@columnVerticalOffset: -(round(@columnDesignedWidth * @verticalBaselinePositionInPercents / 100));
 
 @coverBackgroundSize: @columnDesignedWidth;
 @coverAdditionalFrameSize: 18px;
-@coverFullSize: (@coverBackgroundSize + 2*@coverAdditionalFrameSize);
+@coverFullSize: @coverBackgroundSize + 2*@coverAdditionalFrameSize;
 
 body, html {
     height: 100%;
@@ -16,7 +20,9 @@ body, html {
     width: @columnDesignedWidth;
     height: 100%;
 
-    margin-left: @leftSideDesignedWidth;
+    position: relative;
+    margin-left: @verticalBaselinePositionInPercents;
+    left: @columnVerticalOffset;
 
     background-color: #F1F1F1;
 }
